@@ -1,28 +1,30 @@
 <h2>5# Scan Controller</h2>
 Author: Tobias "floyd" Ospelt, @floyd_ch, http://www.floyd.ch<br>
 Pentagrid AG, 5#, https://www.pentagrid.ch
+
 <h3>Improve Automated and Semi-Automated Active Scanning</h3>
 Active Scanning might often do things that don't make any sense, such as scanning GET requests to .js files or scanning non-repeatable request.
 This extension allows to filter and preprocess according to your needs. It tries to check if a request is repeatable or not. If a request is not repeatable, it tries to make them repeatable by injecting Hackvertor tags. The extension doesn't try to be perfect, but useful. It cuts corners and in some cases simply doesn't scan certain requests. However, the extension individually displays and explains all decisions, allowing you to change the settings if you don't like the behavior. It's a better "Actively scan all in-scope traffic through Proxy".
+
 <h3>Features</h3>
 <ul>
-<li>Everything configurable (interesting/uninteresting, blacklisting requests, etc.)</li>
 <li>Check repeatability of requests and try to make them repeatable</li>
+<li>Everything configurable (interesting/uninteresting, blacklisting requests, etc.)</li>
 </ul>
-<h3>Howto use this extension</h3>
+
+<h3>How to use this extension</h3>
 Usage is very simple:
 <ul>
 <li>Add the website you test to the scope</li>
 <li>Enable "Proxy requests" in the tab/section "Scan - Options - Requests to process"</li>
 <li>Browse the web application (proxy) by using the Burp builtin browser.</li>
-<li>Check back on the $tabName tab and see which request have been active scanned. Check those<br>
-that have a high "Interesting" rating but haven't been scanned ("Scanned" column set to false)</li>
+<li>Check back on the $tabName tab and see which request have been active scanned. Check those that have a high "Interesting" rating but haven't been scanned ("Scanned" column set to false)</li>
 <li>See the Dashboard for Active Scan findings</li>
-<li>It's always good to sort by the reason column in the UI and check the different reasons.</li>
+<li>Hint: It's always good to sort by the reason column in the UI and check the different reasons.</li>
 </ul>
+
 <h3>Performance discussion</h3>
 Improves performance by not sending everything to active scan. 
+
 <h3>Ideas for future improvements</h3>
-<ul>
-<li>Let me know if you think of any improvements: tobias at pentagrid dot ch.</li>
-</ul>
+Let me know if you think of any improvements: tobias at pentagrid dot ch.
