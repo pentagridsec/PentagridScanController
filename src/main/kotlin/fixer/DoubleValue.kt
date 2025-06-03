@@ -17,7 +17,7 @@ class DoubleValue(override val entry: LogEntry): Fixer(entry) {
         }
         val (beforeLength, afterLength) = lengths
         val sign = if("-" in parameter.value) "-" else ""
-        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')>$sign<@random_num(${beforeLength})/>.<@random_num(${afterLength})/><@/set_variable${entry.hackvertorVariable}>"
+        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')>$sign<@random_num(${beforeLength})/>.<@random_num(${afterLength})/></@set_variable${entry.hackvertorVariable}>"
         val valueLaterOccurrence = "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1
         return listOf(valueFirstOccurrence, valueLaterOccurrence)

@@ -11,7 +11,7 @@ class UuidValue(override val entry: LogEntry): Fixer(entry) {
 
     override fun createReplacement(parameter: ParameterAdvanced): List<String> {
         val valueFirstOccurrence =
-            parameter.value.dropLast(12) + "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/><@/set_variable${entry.hackvertorVariable}>"
+            parameter.value.dropLast(12) + "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/></@set_variable${entry.hackvertorVariable}>"
         val valueLaterOccurrence =
             parameter.value.dropLast(12) + "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1

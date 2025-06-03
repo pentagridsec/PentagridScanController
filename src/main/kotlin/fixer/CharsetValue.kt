@@ -11,7 +11,7 @@ class CharsetValue(override val entry: LogEntry): Fixer(entry) {
 
     override fun createReplacement(parameter: ParameterAdvanced): List<String> {
         val lengthValue = parameter.value.length
-        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')><@random($lengthValue)>${parameter.value}<@/random><@/set_variable${entry.hackvertorVariable}>"
+        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')><@random($lengthValue)>${parameter.value}</@random></@set_variable${entry.hackvertorVariable}>"
         val valueLaterOccurrence = "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1
         return listOf(valueFirstOccurrence, valueLaterOccurrence)

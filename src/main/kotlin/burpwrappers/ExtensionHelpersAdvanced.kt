@@ -46,14 +46,14 @@ class ExtensionHelpersAdvanced(val helper: IExtensionHelpers) : IExtensionHelper
                 val urlPath = splitted[1]
                 req = BurpExtender.h.stringToBytes("GET /$urlPath HTTP/1.1\r\n" +
                         "Host: $host\r\n" +
-                        "Extension: $extensionName testing if Hackvertor works<@d_url>%0D%0A%0D%0A<@/d_url>")
+                        "Extension: $extensionName testing if Hackvertor works<@d_url>%0D%0A%0D%0A</@d_url>")
                 workingReq = BurpExtender.h.stringToBytes("GET /$urlPath HTTP/1.1\r\n" +
                         "Host: $host\r\n" +
                         "Extension: $extensionName testing if Hackvertor works\r\n\r\n")
             }else{
                 req = BurpExtender.h.stringToBytes("GET / HTTP/1.1\r\n" +
                         "Host: $host\r\n" +
-                        "Extension: $extensionName testing if Hackvertor works<@d_url>%0D%0A%0D%0A<@/d_url>")
+                        "Extension: $extensionName testing if Hackvertor works<@d_url>%0D%0A%0D%0A</@d_url>")
                 workingReq = BurpExtender.h.stringToBytes("GET / HTTP/1.1\r\n" +
                         "Host: $host\r\n" +
                         "Extension: $extensionName testing if Hackvertor works\r\n\r\n")
@@ -64,7 +64,7 @@ class ExtensionHelpersAdvanced(val helper: IExtensionHelpers) : IExtensionHelper
             host = "example.org"
             req = BurpExtender.h.stringToBytes(
                 "GET / HTTP/1.1\r\n" +
-                        "Host: <@d_url><@urlencode_all>example.org<@/urlencode_all><@/d_url>\r\n" +
+                        "Host: <@d_url><@urlencode_all>example.org</@urlencode_all></@d_url>\r\n" +
                         "\r\n")
             workingReq = BurpExtender.h.stringToBytes(
                 "GET / HTTP/1.1\r\n" +
