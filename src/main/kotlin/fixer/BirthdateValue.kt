@@ -12,7 +12,7 @@ class BirthdateValue(override val entry: LogEntry): Fixer(entry) {
 
     override fun createReplacement(parameter: ParameterAdvanced): List<String> {
         val startYear = Calendar.getInstance().get(Calendar.YEAR) - 122
-        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic($startYear,'+',',')><@random_num(2)/><@/arithmetic>-0<@random_num(1)/>-0<@random_num(1)/><@/set_variable${entry.hackvertorVariable}>"
+        val valueFirstOccurrence = "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic($startYear,'+',',')><@random_num(2)/></@arithmetic>-0<@random_num(1)/>-0<@random_num(1)/></@set_variable${entry.hackvertorVariable}>"
         val valueLaterOccurrence = "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1
         return listOf(valueFirstOccurrence, valueLaterOccurrence)

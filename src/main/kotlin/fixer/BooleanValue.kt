@@ -21,7 +21,7 @@ class BooleanValue(override val entry: LogEntry): Fixer(entry) {
             "0" -> "1"
             else -> parameter.value
         }
-        val newValue = "<@set_variable${entry.hackvertorVariable}('false')>$value<@/set_variable${entry.hackvertorVariable}>"
+        val newValue = "<@set_variable${entry.hackvertorVariable}('false')>$value</@set_variable${entry.hackvertorVariable}>"
         entry.hackvertorVariable += 1
         return listOf(newValue)
     }

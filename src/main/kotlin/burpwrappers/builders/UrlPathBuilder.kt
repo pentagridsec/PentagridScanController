@@ -14,10 +14,10 @@ class UrlPathBuilder(private val relativeUrl: String){
         cleaned = splitAndDivide(cleaned, "?")
         cleaned = splitAndDivide(cleaned, "#")
         cleaned = splitAndDivide(cleaned, ";")
-        cleaned = cleaned.replace("<@/", randomReplacerForEndHackvertor + "1")
+        cleaned = cleaned.replace("</@", randomReplacerForEndHackvertor + "1")
         cleaned = cleaned.replace("/>", randomReplacerForEndHackvertor + "2")
         val splitted = cleaned.split("/").drop(1)
-        return splitted.map{ it.replace(randomReplacerForEndHackvertor + "2", "/>").replace(randomReplacerForEndHackvertor + "1", "<@/")}
+        return splitted.map{ it.replace(randomReplacerForEndHackvertor + "2", "/>").replace(randomReplacerForEndHackvertor + "1", "</@")}
     }
 
     private fun splitAndDivide(input: String, delimiter: String): String{

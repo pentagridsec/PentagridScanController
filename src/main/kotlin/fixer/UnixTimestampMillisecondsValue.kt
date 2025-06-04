@@ -14,11 +14,11 @@ open class UnixTimestampMillisecondsValue(override val entry: LogEntry): Fixer(e
     override fun createReplacement(parameter: ParameterAdvanced): List<String> {
         val offset = storedOffsets[parameter.uniqueIdentifier()]
         val valueFirstOccurrence = if(offset == null) {
-            "<@set_variable${entry.hackvertorVariable}('false')><@timestamp/><@/set_variable${entry.hackvertorVariable}>"
+            "<@set_variable${entry.hackvertorVariable}('false')><@timestamp/></@set_variable${entry.hackvertorVariable}>"
         }else if(offset > 0.toLong()) {
-            "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic($offset,'+',',')><@timestamp/><@/arithmetic><@/set_variable${entry.hackvertorVariable}>"
+            "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic($offset,'+',',')><@timestamp/></@arithmetic></@set_variable${entry.hackvertorVariable}>"
         }else{
-            "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic(${offset.absoluteValue},'-',',')><@timestamp/><@/arithmetic><@/set_variable${entry.hackvertorVariable}>"
+            "<@set_variable${entry.hackvertorVariable}('false')><@arithmetic(${offset.absoluteValue},'-',',')><@timestamp/></@arithmetic></@set_variable${entry.hackvertorVariable}>"
         }
         val valueLaterOccurrence = "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1

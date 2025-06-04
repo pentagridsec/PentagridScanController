@@ -13,13 +13,13 @@ class EmailValue(override val entry: LogEntry): Fixer(entry) {
     override fun createReplacement(parameter: ParameterAdvanced): List<String> {
         val valueFirstOccurrence: String = if(BurpExtender.ui.settings.catchAllEmail.isNotEmpty() &&
             parameter.value.matches(Regex(fullMatchRegexDomain(BurpExtender.ui.settings.catchAllEmail)))){
-            "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/><@/set_variable${entry.hackvertorVariable}>@${BurpExtender.ui.settings.catchAllEmail}"
+            "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/></@set_variable${entry.hackvertorVariable}>@${BurpExtender.ui.settings.catchAllEmail}"
         }else{
             val colab = BurpExtender.c.createBurpCollaboratorClientContext()?.collaboratorServerLocation
             if(colab != null && parameter.value.matches(Regex(fullMatchRegexDomain(colab))))
-                "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/><@/set_variable${entry.hackvertorVariable}>@$colab"
+                "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/></@set_variable${entry.hackvertorVariable}>@$colab"
             else
-                "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/><@/set_variable${entry.hackvertorVariable}>@$colab"
+                "<@set_variable${entry.hackvertorVariable}('false')><@random_num(12)/></@set_variable${entry.hackvertorVariable}>@$colab"
         }
         val valueLaterOccurrence = "<@get_variable${entry.hackvertorVariable} />"
         entry.hackvertorVariable += 1
